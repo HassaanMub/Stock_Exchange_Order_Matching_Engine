@@ -145,6 +145,43 @@ class Trade{
     }
 };
 int Trade::tradeCounter = 1; 
+// Logs of All Trades
+class TradeLog{
+    private:
+    struct Node{
+        public:
+        Trade* trade;
+        Node* next;
+        Node(Trade* trade): trade(trade), next(nullptr) {}
+    };
+    public:
+    Node* head;
+    TradeLog(){ head = nullptr; }
+    ~TradeLog() {
+        Node* temp;
+        while (head != nullptr) {
+            temp = head;
+            head = head->next;
+            delete temp->trade; // Deletes Trade Object as well
+            delete temp;
+        }
+    }
+    bool isEmpty(){ return head == nullptr; }
+    void push_front(Trade* trade){
+        Node* newNode = new Node(trade);
+        newNode->next = head;
+        head = newNode;
+    }
+    void display(){
+        if(isEmpty())
+            throw runtime_error("TradeLog is Empty!\n");
+        Node* temp = head;
+        while(temp != nullptr){
+            temp->trade->displayTrade();
+            temp = temp->next;
+        }
+    }
+};
 // // Incoming Order Queue
 class OrderQueue{
     private:
@@ -348,7 +385,7 @@ class MatchingEngine{
     OrderHeap* buyHeap;
     OrderHeap* sellHeap;
     public:
-    vector<Trade> tradeLog;
+    TradeLog tradeLog;
     MatchingEngine(){
         buyHeap = new OrderHeap(OrderType::BUY);
         sellHeap = new OrderHeap(OrderType::SELL);
@@ -398,7 +435,7 @@ class MatchingEngine{
                     break;
                 // Remove Top & Match Orders
                 buyHeap->removeTop();
-                matchOrders(topBuy, order, OrderType::BUY);
+                matchOrders(topBuy, order, OrderType::SELL);
                 // Reinsert SELL if shares remain
                 if ((topBuy->getRemainingShares() > 0) && (topBuy->isActive()))
                     buyHeap->insertOrder(topBuy);
@@ -418,7 +455,9 @@ class MatchingEngine{
         sell->reduceShares(quantity);
         addTrade(newTrade);
     }
-    void addTrade(Trade* trade){ tradeLog.push_back(*(trade)); }
+    void addTrade(Trade* trade){
+        tradeLog.push_front(trade);
+    }
 };
 // Handles Incoming Orders
 class OrderManager{
@@ -590,9 +629,7 @@ class StockExchange{
         manager->orderTable->display();
     }
     void displayTradeHistory(){
-        for(Trade t : manager->engine->tradeLog){
-            t.displayTrade();
-        }
+        manager->engine->tradeLog.display();
     }
 };
 

@@ -1,0 +1,15 @@
+User Interface;
+1. Display Open Orders;
+    - Filter orders by the currently logged-in user's ID.
+2. Display Trade History;
+    - Show only trades involving orders belonging to that user.
+3. Search Order;
+    - Allow users to search their own Order IDs (only).
+4. Cancel Order;
+    - Allows users to cancel only their own orders.
+
+Admin Interface;
+1. View All Open Orders.
+2. View the Complete Trade History
+3. Inspect the Entire Order Book.
+4. Monitor Matching Activity.
