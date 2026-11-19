@@ -1,0 +1,178 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Class Diagram" id="ZLlsuewM7PgfzD_Hl0Ug">
+    <mxGraphModel dx="5809" dy="2409" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" background="light-dark(#FFFFFF,#FFFFFF)" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="8FHhi0EOuua_JHb90U5a-63" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#475569;strokeWidth=1.5;align=left;verticalAlign=top;spacing=0;" value="&lt;div style=&quot;font-family:Arial;font-size:12px;&quot;&gt;&lt;div style=&quot;text-align:center;font-weight:bold;font-size:14px;background-color:#dbeafe;padding:6px;border-bottom:1px solid #64748b;&quot;&gt;Account&lt;/div&gt;&lt;div style=&quot;padding:4px;border-bottom:1px solid #94a3b8;&quot;&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;- balance: double&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;padding:4px;&quot;&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;+ Account(initializationAmount=0.0)&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;+ getBal(): double&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;+ deposit(amount): void&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;+ withdraw(withD): double&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="190" width="240" x="-799" y="751" as="geometry" />
+        </mxCell>
+        <mxCell id="8FHhi0EOuua_JHb90U5a-64" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#475569;strokeWidth=1.5;align=left;verticalAlign=top;spacing=0;" value="&lt;div style=&quot;font-family:Arial;font-size:12px;&quot;&gt;&lt;div style=&quot;text-align:center;font-weight:bold;font-size:14px;background-color:#dbeafe;padding:6px;border-bottom:1px solid #64748b;&quot;&gt;User&lt;/div&gt;&lt;div style=&quot;padding:4px;border-bottom:1px solid #94a3b8;&quot;&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;- name: string&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;- pass: string&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;- account: Account&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;padding:4px;&quot;&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;+ User(n, password, initialBalance)&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;+ getName(): string&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;+ getPassword(): string&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;+ getUserBal(): double&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;+ userDeposit(amount): void&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;+ userWithdraw(withD): double&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="215" width="250" x="-406" y="738.5" as="geometry" />
+        </mxCell>
+        <mxCell id="8FHhi0EOuua_JHb90U5a-65" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#475569;strokeWidth=1.5;align=left;verticalAlign=top;spacing=0;" value="&lt;div style=&quot;font-family:Arial;font-size:12px;&quot;&gt;&lt;div style=&quot;text-align:center;font-weight:bold;font-size:14px;background-color:#dbeafe;padding:6px;border-bottom:1px solid #64748b;&quot;&gt;Order&lt;/div&gt;&lt;div style=&quot;padding:4px;border-bottom:1px solid #94a3b8;&quot;&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;- orderID: int {static counter}&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;- user: User*&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;- price: double&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;- shares: int&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;- remainingShares: int&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;- sequenceNumber: int {static counter}&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;- active: bool&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;+ type: OrderType&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;padding:4px;&quot;&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;+ Order(user, type, price, shares)&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;+ getOrderID(): int&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;+ getPrice(): double&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;+ getRemainingShares(): int&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;+ getSequenceNumber(): int&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;+ isActive(): bool&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;+ reduceShares(decShares): void&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;+ cancelOrder(): void&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;+ displayOrder(): void&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="364" width="280" x="1638" y="252" as="geometry" />
+        </mxCell>
+        <mxCell id="8FHhi0EOuua_JHb90U5a-66" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#475569;strokeWidth=1.5;align=left;verticalAlign=top;spacing=0;" value="&lt;div style=&quot;font-family:Arial;font-size:12px;&quot;&gt;&lt;div style=&quot;text-align:center;font-weight:bold;font-size:14px;background-color:#dbeafe;padding:6px;border-bottom:1px solid #64748b;&quot;&gt;Trade&lt;/div&gt;&lt;div style=&quot;padding:4px;border-bottom:1px solid #94a3b8;&quot;&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;- tradeID: int {static counter}&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;- buyOrderID: int&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;- sellOrderID: int&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;- executionPrice: double&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;- tradedShares: int&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;- executionTime: time_t&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;padding:4px;&quot;&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;+ Trade(buy, sell, price, quantity)&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;+ displayTrade(): void&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="230" width="280" x="2089" y="43" as="geometry" />
+        </mxCell>
+        <mxCell id="8FHhi0EOuua_JHb90U5a-67" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#475569;strokeWidth=1.5;align=left;verticalAlign=top;spacing=0;" value="&lt;div style=&quot;font-family:Arial;font-size:12px;&quot;&gt;&lt;div style=&quot;text-align:center;color:#666;font-size:10px;&quot;&gt;&amp;lt;&amp;lt;enumeration&amp;gt;&amp;gt;&lt;/div&gt;&lt;div style=&quot;text-align:center;font-weight:bold;font-size:14px;background-color:#dbeafe;padding:6px;border-bottom:1px solid #64748b;&quot;&gt;OrderType&lt;/div&gt;&lt;div style=&quot;padding:4px;border-bottom:1px solid #94a3b8;&quot;&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;BUY&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;SELL&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;padding:4px;&quot;&gt;&lt;/div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="120" width="200" x="1678" y="76" as="geometry" />
+        </mxCell>
+        <mxCell id="8FHhi0EOuua_JHb90U5a-68" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#475569;strokeWidth=1.5;align=left;verticalAlign=top;spacing=0;" value="&lt;div style=&quot;font-family:Arial;font-size:12px;&quot;&gt;&lt;div style=&quot;text-align:center;font-weight:bold;font-size:14px;background-color:#dbeafe;padding:6px;border-bottom:1px solid #64748b;&quot;&gt;OrderQueue&lt;/div&gt;&lt;div style=&quot;padding:4px;border-bottom:1px solid #94a3b8;&quot;&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;- front: Node*&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;- rear: Node*&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;  Node: order: Order*, next: Node*&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;padding:4px;&quot;&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;+ OrderQueue()&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;+ isEmpty(): bool&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;+ enqueue(order): void&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;+ dequeue(): Order*&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;+ ~OrderQueue()&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="230" width="270" x="552" y="399" as="geometry" />
+        </mxCell>
+        <mxCell id="8FHhi0EOuua_JHb90U5a-69" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#475569;strokeWidth=1.5;align=left;verticalAlign=top;spacing=0;" value="&lt;div style=&quot;font-family:Arial;font-size:12px;&quot;&gt;&lt;div style=&quot;text-align:center;font-weight:bold;font-size:14px;background-color:#dbeafe;padding:6px;border-bottom:1px solid #64748b;&quot;&gt;OrderHeap&lt;/div&gt;&lt;div style=&quot;padding:4px;border-bottom:1px solid #94a3b8;&quot;&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;- heap: Order**&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;- capacity: int&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;- heapSize: int&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;- type: OrderType&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;padding:4px;&quot;&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;+ OrderHeap(heapType, initialCapacity=10)&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;+ insertOrder(order): void&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;+ removeTop(): Order*&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;+ getTop(): Order*&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;- resize(): void&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;- hasHigherPriority(a,b): bool&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;- heapifyUp(index): void&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;- heapifyDown(index): void&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;+ isEmpty(): bool&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="280" width="290" x="1756" y="689" as="geometry" />
+        </mxCell>
+        <mxCell id="8FHhi0EOuua_JHb90U5a-70" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#475569;strokeWidth=1.5;align=left;verticalAlign=top;spacing=0;" value="&lt;div style=&quot;font-family:Arial;font-size:12px;&quot;&gt;&lt;div style=&quot;text-align:center;font-weight:bold;font-size:14px;background-color:#dbeafe;padding:6px;border-bottom:1px solid #64748b;&quot;&gt;HashTable&lt;/div&gt;&lt;div style=&quot;padding:4px;border-bottom:1px solid #94a3b8;&quot;&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;- table[SIZE=100]: Node*&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;- Node: order: Order*, next: Node*&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;padding:4px;&quot;&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;- hashFunction(orderID): int&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;+ HashTable()&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;+ insert(order): void&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;+ search(orderID): Order*&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;+ remove(orderID): bool&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;+ display(): void&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="260" width="270" x="1391" y="689" as="geometry" />
+        </mxCell>
+        <mxCell id="8FHhi0EOuua_JHb90U5a-71" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#475569;strokeWidth=1.5;align=left;verticalAlign=top;spacing=0;" value="&lt;div style=&quot;font-family:Arial;font-size:12px;&quot;&gt;&lt;div style=&quot;text-align:center;font-weight:bold;font-size:14px;background-color:#dbeafe;padding:6px;border-bottom:1px solid #64748b;&quot;&gt;TradeLog&lt;/div&gt;&lt;div style=&quot;padding:4px;border-bottom:1px solid #94a3b8;&quot;&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;+ head: Node*&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;- Node: trade: Trade*, next: Node*&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;padding:4px;&quot;&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;+ TradeLog()&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;+ ~TradeLog()&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;+ isEmpty(): bool&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;+ push_front(trade): void&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;+ display(): void&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="220" width="260" x="2099" y="321" as="geometry" />
+        </mxCell>
+        <mxCell id="8FHhi0EOuua_JHb90U5a-72" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#475569;strokeWidth=1.5;align=left;verticalAlign=top;spacing=0;" value="&lt;div style=&quot;font-family:Arial;font-size:12px;&quot;&gt;&lt;div style=&quot;text-align:center;font-weight:bold;font-size:14px;background-color:#dbeafe;padding:6px;border-bottom:1px solid #64748b;&quot;&gt;MatchingEngine&lt;/div&gt;&lt;div style=&quot;padding:4px;border-bottom:1px solid #94a3b8;&quot;&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;- buyHeap: OrderHeap*&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;- sellHeap: OrderHeap*&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;+ tradeLog: TradeLog*&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;padding:4px;&quot;&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;+ MatchingEngine()&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;+ ~MatchingEngine()&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;+ processOrder(order): void&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;+ matchOrders(buy,sell,type): void&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;+ executeTrade(buy,sell,quantity,type): void&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;+ addTrade(trade): void&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="290" width="300" x="2178" y="686" as="geometry" />
+        </mxCell>
+        <mxCell id="8FHhi0EOuua_JHb90U5a-73" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#475569;strokeWidth=1.5;align=left;verticalAlign=top;spacing=0;" value="&lt;div style=&quot;font-family:Arial;font-size:12px;&quot;&gt;&lt;div style=&quot;text-align:center;font-weight:bold;font-size:14px;background-color:#dbeafe;padding:6px;border-bottom:1px solid #64748b;&quot;&gt;OrderManager&lt;/div&gt;&lt;div style=&quot;padding:4px;border-bottom:1px solid #94a3b8;&quot;&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;+ incomingOrders: OrderQueue*&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;+ orderTable: HashTable*&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;+ engine: MatchingEngine*&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;padding:4px;&quot;&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;+ OrderManager()&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;+ ~OrderManager()&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;+ placeBuyOrder(user,price,shares): void&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;+ placeSellOrder(user,price,shares): void&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;+ processPendingOrders(): void&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;+ cancelOrder(order): void&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;+ findOrder(orderID): Order*&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="280" width="330" x="950" y="686" as="geometry" />
+        </mxCell>
+        <mxCell id="8FHhi0EOuua_JHb90U5a-74" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#475569;strokeWidth=1.5;align=left;verticalAlign=top;spacing=0;" value="&lt;div style=&quot;font-family:Arial;font-size:12px;&quot;&gt;&lt;div style=&quot;text-align:center;font-weight:bold;font-size:14px;background-color:#dbeafe;padding:6px;border-bottom:1px solid #64748b;&quot;&gt;StockExchange&lt;/div&gt;&lt;div style=&quot;padding:4px;border-bottom:1px solid #94a3b8;&quot;&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;- manager: OrderManager*&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;padding:4px;&quot;&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;+ StockExchange()&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;+ ~StockExchange()&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;+ displayMenu(loggedInUser): void&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;+ displayOpenOrders(): void&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;+ displayTradeHistory(): void&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="230" width="300" x="565" y="711" as="geometry" />
+        </mxCell>
+        <mxCell id="8FHhi0EOuua_JHb90U5a-75" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#475569;strokeWidth=1.5;align=left;verticalAlign=top;spacing=0;" value="&lt;div style=&quot;font-family:Arial;font-size:12px;&quot;&gt;&lt;div style=&quot;text-align:center;color:#666;font-size:10px;&quot;&gt;&amp;lt;&amp;lt;utility&amp;gt;&amp;gt;&lt;/div&gt;&lt;div style=&quot;text-align:center;font-weight:bold;font-size:14px;background-color:#dbeafe;padding:6px;border-bottom:1px solid #64748b;&quot;&gt;GlobalFunctions&lt;/div&gt;&lt;div style=&quot;padding:4px;border-bottom:1px solid #94a3b8;&quot;&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;(free functions)&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;padding:4px;&quot;&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;+ main(): int&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;+ mainMenu(exc, users): void&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;+ createAccount(users): void&lt;/div&gt;&lt;div style=&quot;padding:2px 4px;&quot;&gt;+ login(users): User*&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="220" width="390" x="20" y="729" as="geometry" />
+        </mxCell>
+        <mxCell id="8FHhi0EOuua_JHb90U5a-76" edge="1" parent="1" source="8FHhi0EOuua_JHb90U5a-64" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=diamond;startFill=1;endArrow=none;strokeColor=#2563eb;strokeWidth=1.5;" target="8FHhi0EOuua_JHb90U5a-63" value="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="8FHhi0EOuua_JHb90U5a-77" edge="1" parent="1" source="8FHhi0EOuua_JHb90U5a-65" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=open;endFill=0;strokeColor=#64748b;exitX=0;exitY=0.113;exitDx=0;exitDy=0;exitPerimeter=0;" target="8FHhi0EOuua_JHb90U5a-64" value="user">
+          <mxGeometry relative="1" x="-0.1255" as="geometry">
+            <mxPoint x="1628.3" y="290.95" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8FHhi0EOuua_JHb90U5a-78" edge="1" parent="1" source="8FHhi0EOuua_JHb90U5a-65" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=open;endFill=0;strokeColor=#94a3b8;" target="8FHhi0EOuua_JHb90U5a-67" value="type">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1869.19" y="81.74000000000001" />
+              <mxPoint x="1869.19" y="81.74000000000001" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8FHhi0EOuua_JHb90U5a-79" edge="1" parent="1" source="8FHhi0EOuua_JHb90U5a-68" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=open;endFill=0;strokeColor=#64748b;" target="8FHhi0EOuua_JHb90U5a-65" value="stores Order*">
+          <mxGeometry relative="1" x="0.3015" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="679" y="338" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8FHhi0EOuua_JHb90U5a-80" edge="1" parent="1" source="8FHhi0EOuua_JHb90U5a-69" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=open;endFill=0;strokeColor=#64748b;entryX=0.736;entryY=0.994;entryDx=0;entryDy=0;entryPerimeter=0;" target="8FHhi0EOuua_JHb90U5a-65" value="stores Order*">
+          <mxGeometry relative="1" x="0.0103" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="1844.08" y="640.39" />
+              <mxPoint x="1844.08" y="640.39" />
+            </Array>
+            <mxPoint x="1842.02" y="627.13" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8FHhi0EOuua_JHb90U5a-81" edge="1" parent="1" source="8FHhi0EOuua_JHb90U5a-70" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=open;endFill=0;strokeColor=#64748b;" target="8FHhi0EOuua_JHb90U5a-65" value="indexes Order*">
+          <mxGeometry relative="1" x="-0.3684" y="-5" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="1482.3" y="545.1" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8FHhi0EOuua_JHb90U5a-82" edge="1" parent="1" source="8FHhi0EOuua_JHb90U5a-71" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=diamond;startFill=1;endArrow=none;strokeColor=#2563eb;strokeWidth=1.5;" target="8FHhi0EOuua_JHb90U5a-66" value="owns Trade*">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2264.5" y="295.22" />
+              <mxPoint x="2264.5" y="295.22" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8FHhi0EOuua_JHb90U5a-83" edge="1" parent="1" source="8FHhi0EOuua_JHb90U5a-72" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=diamond;startFill=1;endArrow=none;strokeColor=#2563eb;strokeWidth=1.5;entryX=1.001;entryY=0.508;entryDx=0;entryDy=0;entryPerimeter=0;" target="8FHhi0EOuua_JHb90U5a-69" value="buyHeap / sellHeap">
+          <mxGeometry relative="1" x="0.0456" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points" />
+            <mxPoint x="2073.53" y="804.9" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8FHhi0EOuua_JHb90U5a-84" edge="1" parent="1" source="8FHhi0EOuua_JHb90U5a-72" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=diamond;startFill=1;endArrow=none;strokeColor=#2563eb;strokeWidth=1.5;" target="8FHhi0EOuua_JHb90U5a-71" value="tradeLog">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2262.83" y="558.67" />
+              <mxPoint x="2262.83" y="558.67" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8FHhi0EOuua_JHb90U5a-85" edge="1" parent="1" source="8FHhi0EOuua_JHb90U5a-72" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=open;endFill=0;strokeColor=#94a3b8;" target="8FHhi0EOuua_JHb90U5a-65" value="matches">
+          <mxGeometry relative="1" x="-0.0324" as="geometry">
+            <Array as="points">
+              <mxPoint x="2210.4" y="583.6" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8FHhi0EOuua_JHb90U5a-86" edge="1" parent="1" source="8FHhi0EOuua_JHb90U5a-73" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=diamond;startFill=1;endArrow=none;strokeColor=#2563eb;strokeWidth=1.5;" target="8FHhi0EOuua_JHb90U5a-68" value="incomingOrders">
+          <mxGeometry relative="1" x="0.0006" as="geometry">
+            <Array as="points">
+              <mxPoint x="1012.7" y="476" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8FHhi0EOuua_JHb90U5a-87" edge="1" parent="1" source="8FHhi0EOuua_JHb90U5a-73" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=diamond;startFill=1;endArrow=none;strokeColor=#2563eb;strokeWidth=1.5;exitX=0.997;exitY=0.436;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.768;entryDx=0;entryDy=0;entryPerimeter=0;" target="8FHhi0EOuua_JHb90U5a-70" value="orderTable">
+          <mxGeometry relative="1" x="0.0589" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="1338.1" y="808.1" />
+              <mxPoint x="1338.1" y="888.7" />
+            </Array>
+            <mxPoint x="1424.18" y="851.8" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8FHhi0EOuua_JHb90U5a-88" edge="1" parent="1" source="8FHhi0EOuua_JHb90U5a-73" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=diamond;startFill=1;endArrow=none;strokeColor=#2563eb;strokeWidth=1.5;" target="8FHhi0EOuua_JHb90U5a-72" value="engine">
+          <mxGeometry relative="1" x="0.026" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="1070.7" y="1023.2" />
+              <mxPoint x="2339.3" y="1023.2" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8FHhi0EOuua_JHb90U5a-89" edge="1" parent="1" source="8FHhi0EOuua_JHb90U5a-73" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=open;endFill=0;strokeColor=#94a3b8;" target="8FHhi0EOuua_JHb90U5a-65" value="creates / manages">
+          <mxGeometry relative="1" x="0.3084" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="1115" y="474.8" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8FHhi0EOuua_JHb90U5a-90" edge="1" parent="1" source="8FHhi0EOuua_JHb90U5a-74" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=diamond;startFill=1;endArrow=none;strokeColor=#2563eb;strokeWidth=1.5;" target="8FHhi0EOuua_JHb90U5a-73" value="manager">
+          <mxGeometry relative="1" x="0.2022" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8FHhi0EOuua_JHb90U5a-91" edge="1" parent="1" source="8FHhi0EOuua_JHb90U5a-75" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=open;endFill=0;strokeColor=#94a3b8;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.001;entryY=0.553;entryDx=0;entryDy=0;entryPerimeter=0;" target="8FHhi0EOuua_JHb90U5a-74" value="creates / calls">
+          <mxGeometry relative="1" x="0.0634" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points" />
+            <mxPoint x="841.4" y="1928.5" as="sourcePoint" />
+            <mxPoint x="1582.4" y="1625.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8FHhi0EOuua_JHb90U5a-92" edge="1" parent="1" source="8FHhi0EOuua_JHb90U5a-75" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=open;endFill=0;strokeColor=#94a3b8;entryX=1;entryY=0.341;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.001;exitY=0.378;exitDx=0;exitDy=0;exitPerimeter=0;" target="8FHhi0EOuua_JHb90U5a-64" value="login / account creation">
+          <mxGeometry relative="1" x="0.0043" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points" />
+            <mxPoint x="-5.58" y="817.52" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8FHhi0EOuua_JHb90U5a-93" parent="1" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;size=48;fillColor=#fff7d6;strokeColor=#d6b656;align=left;verticalAlign=top;spacing=8;" value="&lt;div style=&quot;font-family:Arial;font-size:12px;&quot;&gt;&lt;b&gt;UML notes&lt;/b&gt;&lt;br&gt;+ public &amp;nbsp; - private&lt;br&gt;Filled diamond = composition / ownership&lt;br&gt;Dashed arrow = dependency / uses&lt;br&gt;OrderQueue, OrderHeap and HashTable store Order pointers; they do not own Order objects.&lt;br&gt;TradeLog owns its Trade pointers and deletes them in its destructor.&lt;br&gt;Trade stores order IDs, not Order pointers.&lt;br&gt;&lt;b&gt;Implementation note:&lt;/b&gt; OrderManager creates Orders with new, but the pasted code does not show a container/destructor that deletes those Order objects. Add explicit Order ownership to avoid leaks.&lt;/div&gt;" vertex="1">
+          <mxGeometry height="260" width="440" x="-71" y="384" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
