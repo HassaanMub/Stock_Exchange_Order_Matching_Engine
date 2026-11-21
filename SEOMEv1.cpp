@@ -1,16 +1,18 @@
-#include <iostream> // Used
-#include <string>
+#include <iostream>     // Used
+#include <string>       // Used
+#include <fstream>       // Used
 #include <cstdlib>
 #include <cctype>
-#include <ctime>
+#include <ctime>        // Used
 #include <math.h>
-#include <vector>
-#include <stdexcept>
-#include <algorithm>
+#include <vector>       // Used
+#include <stdexcept>    // Used
+#include <algorithm>    // Used
 //Custom Header Files
-#include <utils.h>
+#include <utils.h>      // Used
 using namespace std;
 
+// Forward Class Declarations
 class Account;
 class User;
 class Order;
@@ -22,7 +24,10 @@ class MatchingEngine;
 class OrderManager;
 class StockExchange;
 
+// OrderType Enumeration
 enum class OrderType{ BUY, SELL };
+
+// Account Module
 class Account{
     private:
     double balance;
@@ -46,6 +51,8 @@ class Account{
         return balance;
     }
 };
+
+// User Module
 class User{
     private:
     string name;
@@ -59,7 +66,8 @@ class User{
     void userDeposit(double amount){ account.deposit(amount); }
     double userWithdraw(double withD){ return account.withdraw(withD); }
 };
-// Represents an individual order
+
+// Represents an Individual Order
 class Order{
     private:
     int orderID;
@@ -110,14 +118,17 @@ class Order{
     }
     // int getShares() const { return shares;} // Not Used Currently (NUC)
 };
+
+// Static Members Declarations (SMD)
 int Order::idCounter = 100;
 int Order::sequenceCounter = 1;
+
 // // Represents an Executed Trade
 class Trade{
     private:
     int tradeID;
-    int buyOrderID;
-    int sellOrderID;
+    Order* buyOrderID;
+    Order* sellOrderID;
     double executionPrice;
     int tradedShares;
     time_t executionTime;
@@ -127,8 +138,8 @@ class Trade{
         Order* sell,
         double price,
         int quantity
-    ):  buyOrderID(buy->getOrderID()),
-        sellOrderID(sell->getOrderID()),
+    ):  buyOrderID(buy),
+        sellOrderID(sell),
         tradedShares(quantity),
         executionPrice(price),
         executionTime(time(nullptr)),
@@ -138,16 +149,20 @@ class Trade{
     // int getTradedShares() const { return tradedShares; } // (NUC)
     void displayTrade() const {
         cout<<"Trade ID: T"<<tradeID<<endl;
-        cout<<"Buy Order: B"<<buyOrderID<<endl;
-        cout<<"Sell Order: S"<<sellOrderID<<endl;
+        cout<<"Buy Order: B"<<buyOrderID->getOrderID()<<endl;
+        cout<<"Sell Order: S"<<sellOrderID->getOrderID()<<endl;
         cout<<"Execution Price: "<<executionPrice<<endl;
         cout<<"Traded Shares: "<<tradedShares<<endl;
     }
 };
+
+// Static Members Declarations (SMD)
 int Trade::tradeCounter = 1; 
+
 // Logs of All Trades
 class TradeLog{
     private:
+    // Private Node Structure (PNS)
     struct Node{
         public:
         Trade* trade;
@@ -182,9 +197,11 @@ class TradeLog{
         }
     }
 };
-// // Incoming Order Queue
+
+// Incoming Order Queue
 class OrderQueue{
     private:
+    // Private Node Structure (PNS)
     struct Node{
         public:
         Order* order;
@@ -194,7 +211,10 @@ class OrderQueue{
     Node* front;
     Node* rear;
     public:
+    // Constructor
     OrderQueue(){ front = rear = nullptr; }
+    // Destructor
+    ~OrderQueue(){ while(!isEmpty()){ dequeue(); }}
     bool isEmpty(){ return front == nullptr; }
     void enqueue(Order* order){
         Node* newNode = new Node(order);
@@ -216,8 +236,8 @@ class OrderQueue{
         delete temp;
         return result;
     }
-    ~OrderQueue(){ while(!isEmpty()){ dequeue(); }}
 };
+
 // Buy and Sell Priority Heaps
 class OrderHeap{
     private:
@@ -225,6 +245,7 @@ class OrderHeap{
         int capacity;
         int heapSize;
         OrderType type;
+        // Check Higher Priority
         bool hasHigherPriority(Order* a, Order* b) const {
             if(a->getPrice() != b->getPrice()){
                 if(type == OrderType::BUY)
@@ -233,6 +254,7 @@ class OrderHeap{
             }
             return a->getSequenceNumber() < b->getSequenceNumber();
         }
+        // Resize Heap (Doubles the Size)
         void resize(){
             capacity *= 2;
             Order** newHeap = new Order*[capacity];
@@ -253,9 +275,7 @@ class OrderHeap{
             heap = new Order*[capacity];
     }
     // Destructor
-    ~OrderHeap(){
-        delete[] heap;
-    }
+    ~OrderHeap(){ delete[] heap; }
     void insertOrder(Order* order){
         if(heapSize == capacity)
             resize();
@@ -310,9 +330,11 @@ class OrderHeap{
     bool isEmpty() const { return heapSize == 0; }
     // int getSize() const { return heapSize; } // (NUC)
 };
-// Order ID Lookup
+
+// Order ID Lookup for cancelation of Order's
 class HashTable {
 private:
+    // Private Node Structure (PNS)
     struct Node {
         Order* order;
         Node* next;
@@ -379,20 +401,23 @@ public:
         }
     }
 };
-// Matches buy and sell orders
+
+// Matches buy, sell orders & Stores Trade Logs
 class MatchingEngine{
     private:
     OrderHeap* buyHeap;
     OrderHeap* sellHeap;
     public:
-    TradeLog tradeLog;
+    TradeLog* tradeLog;
     MatchingEngine(){
         buyHeap = new OrderHeap(OrderType::BUY);
         sellHeap = new OrderHeap(OrderType::SELL);
+        tradeLog = new TradeLog();
     }
     ~MatchingEngine(){ 
         delete buyHeap; 
         delete sellHeap;
+        delete tradeLog;
     }
     void processOrder(Order* order){
         // Check if Active or if 0 Shares
@@ -456,9 +481,10 @@ class MatchingEngine{
         addTrade(newTrade);
     }
     void addTrade(Trade* trade){
-        tradeLog.push_front(trade);
+        tradeLog->push_front(trade);
     }
 };
+
 // Handles Incoming Orders
 class OrderManager{
     private:
@@ -504,6 +530,7 @@ class OrderManager{
         return orderTable->search(orderID);
     }
 };
+
 // Coordinates Entire Engine
 // Called from main()
 class StockExchange{
@@ -629,7 +656,7 @@ class StockExchange{
         manager->orderTable->display();
     }
     void displayTradeHistory(){
-        manager->engine->tradeLog.display();
+        manager->engine->tradeLog->display();
     }
 };
 
@@ -638,7 +665,6 @@ void mainMenu(StockExchange &exc, vector<User> &users);
 void createAccount(vector<User> &users);
 User* login(vector<User> &users);
 
-
 int main(){
     vector<User> users;
     StockExchange exchange;
@@ -646,6 +672,8 @@ int main(){
 }
 
 // Global Defined Functions
+
+// Main Starting Menu
 void mainMenu(StockExchange &exc, vector<User> &users){
     int ch;
     User* loggedInUser = nullptr;
@@ -672,6 +700,7 @@ void mainMenu(StockExchange &exc, vector<User> &users){
     if(ch == 3) return;
     exc.displayMenu(*loggedInUser);
 }
+// Register's a User
 void createAccount(vector<User> &users){
     string n, p, cp;
     double bal;
@@ -698,6 +727,7 @@ void createAccount(vector<User> &users){
     User newUser(n, p, bal);
     users.push_back(newUser);
 }
+// Login a User
 User* login(vector<User> &users){
     string n, p;
     double bal;
