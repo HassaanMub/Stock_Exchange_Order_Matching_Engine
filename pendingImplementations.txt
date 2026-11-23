@@ -13,3 +13,5 @@ Admin Interface;
 2. View the Complete Trade History
 3. Inspect the Entire Order Book.
 4. Monitor Matching Activity.
+
+Password Hashing
